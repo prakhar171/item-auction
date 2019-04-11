@@ -2,6 +2,9 @@
 
 > This is an interactive, distributed, item auction demo. List assets for sale (setting a reserve price), and watch as assets that have met their reserve price are automatically transferred to the highest bidder at the end of the auction.
 
+**Participants:**
+`Harsh Karamchandani` `Prakhar Jain`
+
 This business network defines:
 
 **Participants:**
