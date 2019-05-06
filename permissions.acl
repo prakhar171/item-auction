@@ -13,38 +13,38 @@
  */
 
 /**
- * Sample access control list.
+ * Access Control List for the auction network.
  */
 rule Auctioneer {
     description: "Allow the auctioneer full access"
-    participant: "org.acme.item.auction.Auctioneer"
+    participant: "org.example.mynetwork.Auctioneer"
     operation: ALL
-    resource: "org.acme.item.auction.*"
+    resource: "org.example.mynetwork.*"
     action: ALLOW
 }
 
 rule Member {
     description: "Allow the member read access"
-    participant: "org.acme.item.auction.Member"
+    participant: "org.example.mynetwork.Member"
     operation: READ
-    resource: "org.acme.item.auction.*"
+    resource: "org.example.mynetwork.*"
     action: ALLOW
 }
 
 rule ItemOwner {
     description: "Allow the owner of a item total access"
-    participant(m): "org.acme.item.auction.Member"
+    participant(m): "org.example.mynetwork.Member"
     operation: ALL
-    resource(v): "org.acme.item.auction.Item"
+    resource(v): "org.example.mynetwork.Item"
     condition: (v.owner.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
 
 rule ItemListingOwner {
     description: "Allow the owner of a item total access to their item listing"
-    participant(m): "org.acme.item.auction.Member"
+    participant(m): "org.example.mynetwork.Member"
     operation: ALL
-    resource(v): "org.acme.item.auction.ItemListing"
+    resource(v): "org.example.mynetwork.ItemListing"
     condition: (v.item.owner.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
