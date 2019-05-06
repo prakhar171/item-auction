@@ -5,6 +5,8 @@
 **Contributors**
 `Harsh Karamchandani` `Prakhar Jain`
 
+![Home Page](screenshots/main_page.png "Welcome to Decent Auction!")
+
 This business network defines:
 
 **Participants:**
