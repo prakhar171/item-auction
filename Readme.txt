@@ -1,4 +1,10 @@
-cd /Users/praky/fabric-dev-servers
+Github Link: https://github.com/prakhar171/item-auction
+
+Install Hyperledger Composer prerequisities and other tools as described on https://hyperledger.github.io/composer/latest/installing/installing-index
+
+Then follow the following instructions:
+
+cd /Users/[USER-NAME]/fabric-dev-servers
 ./stopfabric.sh
 ./teardownFabric.sh
 ./teardownAllDocker.sh
@@ -17,3 +23,13 @@ cd /Users/praky/fabric-dev-servers/item-auction
 yo hyperledger-composer:angular
 cd item-app
 npm start
+
+Install a suitable XAMPP/WAMP/MAMP server and switch on Apache.
+
+Place the decent-auction folder in the htdocs folder of your installation.
+
+In the functions/functions.php file, replace base_url with your localhost url and access_token with your REST Server Access Token available at localhost:3000.
+
+Navigate to localhost/[ht-docs-path]/decent-auction
+
+Voila!
