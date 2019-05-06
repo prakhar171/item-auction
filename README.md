@@ -14,11 +14,15 @@ This business network defines:
 `Item` `ItemListing`
 
 **Transactions:**
-`Offer` `CloseBidding` `AddMoney` 
+`makeOffer` `CloseBidding` `RevealBid` `endAuction` `AddMoney`   
 
 The `makeOffer` function is called when an `Offer` transaction is submitted. The logic simply checks that the listing for the offer is still for sale, and then adds the offer to the listing, and then updates the offers in the `ItemListing` asset registry.
 
-The `closeBidding` function is called when a `CloseBidding` transaction is submitted for processing. The logic checks that the listing is still for sale, sorts the offers by bid price, and then if the reserve has been met, transfers the ownership of the item associated with the listing to the highest bidder. Money is transferred from the buyer's account to the seller's account, and then all the modified assets are updated in their respective registries.
+The `closeBidding` function is called when a `closeBidding` transaction is submitted for processing. The logic closes the bidding for the item and changes its state from FOR_SALE in the `ItemListing` to BiddingClosed. 
+
+The `RevealBid` function can be called by the bidders after the bidding has closed. It requests the user for their key. The function then encrypts it using the chaincode's public key and pushes it into the blockchain. The blockchain now essentially has everyone's bids in encrypted form and the keys for encryption in an encrypted form.  
+
+The `endAuction` function ends the auction and returns the money from the 2nd highest through the lowest bidder to the `Member` participant. It then subtracts the second highest bid from the highest bid and send it to the highest bidder while sending the second highest bid to the member who put the item up for auction. The item can then be transferred to the highest bidder invoking a change in the `ItemListing` and the `Item` asset.
 
 To test this Business Network Definition in the **Test** tab:
 
@@ -27,7 +31,7 @@ In the `Member` participant registry, create two participants.
 
 ```
 {
-  "$class": "org.acme.item.auction.Member",
+  "$class": "oorg.example.mynetwork.Member",
   "balance": 5000,
   "email": "memberA@acme.org",
   "firstName": "Amy",
