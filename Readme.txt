@@ -1,35 +1,34 @@
-Github Link: https://github.com/prakhar171/item-auction
+echo  "GITHUB REPOSITORY http://www.github.com/prakhar171/item-auction"
 
-Install Hyperledger Composer prerequisities and other tools as described on https://hyperledger.github.io/composer/latest/installing/installing-index
+# How to Set up the network on your local host along with a rest server
 
-Then follow the following instructions:
+echo "Install the prereqs from https://hyperledger.github.io/composer/latest/installing/installing-prereqs"
 
-cd /Users/[USER-NAME]/fabric-dev-servers
-./stopfabric.sh
-./teardownFabric.sh
-./teardownAllDocker.sh
-1
-./downloadfabric.sh
-./startfabric.sh
-./createPeerAdminCard.sh 
+echo "Perform EVERY step mentioned on https://hyperledger.github.io/composer/latest/installing/development-tools"
+
+git clone https://www.github.com/prakhar171/item-auction
+
 cd item-auction/
+
 composer archive create -t dir -n .
-composer network install --card PeerAdmin@hlfv1 --archiveFile item-auction@0.0.1.bna
-composer network start --networkName item-auction --networkVersion 0.0.1 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --file networkadmin.card
+
+composer network install --card PeerAdmin@hlfv1 --archiveFile tutorial-network@0.0.1.bna
+
+composer network start --networkName tutorial-network --networkVersion 0.0.1 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --file networkadmin.card
+
 composer card import -f networkadmin.card
-composer network ping --card admin@item-auction
+
+composer network ping --card admin@tutorial-network
+
 composer-rest-server
-cd /Users/praky/fabric-dev-servers/item-auction 
-yo hyperledger-composer:angular
-cd item-app
-npm start
 
-Install a suitable XAMPP/WAMP/MAMP server and switch on Apache.
+# Use the server using network admin card: admin@tutorial-network
+# Other than web sockets and explorer, choose all options as N
 
-Place the decent-auction folder in the htdocs folder of your installation.
+echo 'Install a suitable XAMPP/WAMP/MAMP server and switch on Apache.'
 
-In the functions/functions.php file, replace base_url with your localhost url and access_token with your REST Server Access Token available at localhost:3000.
+echo 'Place the decent-auction folder in the htdocs folder of your installation.'
 
-Navigate to localhost/[ht-docs-path]/decent-auction
+echo 'In the functions/functions.php file, replace base_url with your localhost url and access_token with your REST Server Access Token available at localhost:3000.'
 
-Voila!
+echo 'Navigate to localhost/[ht-docs-path]/decent-auction'
